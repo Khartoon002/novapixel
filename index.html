@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaPixel Studio | Learn Digital Skills</title>
+  <meta
+    name="description"
+    content="NovaPixel Studio is a digital training platform that teaches graphic design, web design, and digital product creation for income opportunities and long-term growth."
+  />
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-soft: #050505;
+      --panel: #0a0a0a;
+      --panel-2: #101010;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #ffffff;
+      --soft: #e5e5e5;
+      --muted: #a3a3a3;
+      --shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
+      --radius-lg: 32px;
+      --radius-md: 24px;
+      --radius-sm: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.04), transparent 24%),
+        linear-gradient(180deg, #000000 0%, #020202 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 88%);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 16px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(180deg, #191919, #050505);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.3rem;
+      padding: 0.9rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 18px 40px rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero {
+      padding: 5.5rem 0 2.4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.5rem 0.85rem;
+      margin-bottom: 1.15rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--soft);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    h1 {
+      max-width: 12ch;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 42rem;
+    }
+
+    .point {
+      padding: 1rem 1.05rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+      box-shadow: var(--shadow);
+    }
+
+    .point strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .point span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-panel {
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+      box-shadow: var(--shadow);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .panel-dots {
+      display: inline-flex;
+      gap: 0.45rem;
+    }
+
+    .panel-dots span {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .panel-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .panel-block {
+      padding: 1.2rem;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .panel-block:hover,
+    .card:hover,
+    .audience-card:hover,
+    .access-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+    }
+
+    .panel-block strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1.02rem;
+    }
+
+    .panel-block p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 2rem 0 5rem;
+    }
+
+    .section-head {
+      max-width: 48rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .teach-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card,
+    .audience-card,
+    .access-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .card:hover,
+    .audience-card:hover,
+    .access-card:hover {
+      box-shadow: 0 34px 72px rgba(0, 0, 0, 0.72);
+    }
+
+    .card {
+      padding: 1.5rem;
+    }
+
+    .span-5 {
+      grid-column: span 5;
+    }
+
+    .span-7 {
+      grid-column: span 7;
+    }
+
+    .card-label {
+      display: inline-flex;
+      padding: 0.45rem 0.7rem;
+      margin-bottom: 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card h3,
+    .audience-card h3,
+    .access-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p,
+    .audience-card p,
+    .access-card p {
+      color: var(--muted);
+    }
+
+    .skill-list,
+    .product-list,
+    .audience-list {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.15rem;
+    }
+
+    .skill-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .skill-list li,
+    .product-list li,
+    .audience-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--soft);
+    }
+
+    .tick {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      font-size: 0.84rem;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .audience-card,
+    .access-card {
+      padding: 1.6rem;
+    }
+
+    .device-note {
+      margin-top: 1.2rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--soft);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.95rem;
+      margin-top: 1.4rem;
+    }
+
+    .payment-note {
+      margin-top: 1rem;
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    .site-footer {
+      padding: 1rem 0 2.5rem;
+      color: var(--muted);
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .hero-copy,
+    .hero-actions,
+    .hero-points,
+    .hero-panel {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .hero-copy {
+      animation-delay: 0.08s;
+    }
+
+    .hero-actions {
+      animation-delay: 0.16s;
+    }
+
+    .hero-points {
+      animation-delay: 0.24s;
+    }
+
+    .hero-panel {
+      animation-delay: 0.18s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .teach-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .span-5,
+      .span-7 {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .hero-points,
+      .skill-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 4rem;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: 3.15rem;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>NovaPixel Studio</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#teach">What We Teach</a>
+        <a href="#audience">Who It Is For</a>
+        <a href="#access" class="btn btn-primary">Get Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Digital Skills Training Platform</div>
+          <h1>Learn Digital Skills. Build Income. Create Your Future.</h1>
+          <p class="hero-copy">
+            NovaPixel Studio is a digital training platform focused on teaching practical, profitable skills for today’s online economy.
+            Our goal is to help individuals develop strong digital abilities that create income opportunities and long-term growth.
+            We focus on clarity, simplicity, and real-world application.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#access" class="btn btn-primary">Click Here To Get Access</a>
+            <a href="#teach" class="btn btn-secondary">Explore What We Teach</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">
+              <strong>Practical Skills</strong>
+              <span>Built for real-world digital work.</span>
+            </div>
+            <div class="point">
+              <strong>Income Focused</strong>
+              <span>Learn skills that open earning opportunities.</span>
+            </div>
+            <div class="point">
+              <strong>Beginner Friendly</strong>
+              <span>Clear steps for new learners and growing freelancers.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="panel-head">
+            <span>NovaPixel Studio Overview</span>
+            <div class="panel-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="panel-grid">
+            <div class="panel-block">
+              <strong>Graphic Design</strong>
+              <p>Professional visual content for clients, brands, and businesses.</p>
+            </div>
+            <div class="panel-block">
+              <strong>Web Design</strong>
+              <p>Modern responsive websites built with structure, clarity, and conversion in mind.</p>
+            </div>
+            <div class="panel-block">
+              <strong>Digital Products Creation</strong>
+              <p>Create and package digital offers that can be sold online.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="teach">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">What We Teach</div>
+          <h2 class="section-title">Practical digital skills for today’s online economy.</h2>
+          <p class="section-copy">
+            Every training area is designed to help you build ability, confidence, and stronger income opportunities through useful digital work.
+          </p>
+        </div>
+
+        <div class="teach-grid">
+          <article class="card span-7 reveal">
+            <div class="card-label">Graphic Design</div>
+            <h3>Learn professional visual design from the ground up.</h3>
+            <p>
+              You will learn how to design using Canva, Canva Pro, logo design, flyer design, social media design,
+              branding design, business cards, and marketing materials.
+            </p>
+            <ul class="skill-list">
+              <li><span class="tick">✓</span><span>Canva</span></li>
+              <li><span class="tick">✓</span><span>Canva Pro</span></li>
+              <li><span class="tick">✓</span><span>Logo Design</span></li>
+              <li><span class="tick">✓</span><span>Flyer Design</span></li>
+              <li><span class="tick">✓</span><span>Social Media Design</span></li>
+              <li><span class="tick">✓</span><span>Branding Design</span></li>
+              <li><span class="tick">✓</span><span>Business Cards</span></li>
+              <li><span class="tick">✓</span><span>Marketing Materials</span></li>
+            </ul>
+            <p style="margin-top:1.2rem;">
+              You will understand design principles and how to create professional visual content for clients and businesses.
+            </p>
+          </article>
+
+          <article class="card span-5 reveal delay-1">
+            <div class="card-label">Web Design</div>
+            <h3>Create modern, responsive websites.</h3>
+            <p>
+              Learn how to create modern, responsive websites for businesses and personal brands. Understand layout structure,
+              user experience, and how to build websites that convert visitors into customers.
+            </p>
+          </article>
+
+          <article class="card span-5 reveal">
+            <div class="card-label">Digital Products Creation</div>
+            <h3>Create and sell valuable digital products.</h3>
+            <p>
+              Learn how to create digital products and package them in a way that is clear, valuable, and ready for sale.
+            </p>
+            <ul class="product-list">
+              <li><span class="tick">✓</span><span>eBooks</span></li>
+              <li><span class="tick">✓</span><span>Templates</span></li>
+              <li><span class="tick">✓</span><span>Online Courses</span></li>
+              <li><span class="tick">✓</span><span>Downloadable Resources</span></li>
+              <li><span class="tick">✓</span><span>Digital Toolkits</span></li>
+            </ul>
+            <p style="margin-top:1.2rem;">
+              You will also learn how to package and sell your digital products effectively.
+            </p>
+          </article>
+
+          <article class="card span-7 reveal delay-1">
+            <div class="card-label">Why It Matters</div>
+            <h3>Use these skills for work, business, and personal growth.</h3>
+            <p>
+              This training is built to give you more than knowledge. It is designed to help you develop usable digital skills
+              that support freelancing, side income, business growth, and long-term opportunities online.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="audience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Who This Training Is For</div>
+          <h2 class="section-title">Open to beginners, students, workers, business owners, and freelancers.</h2>
+          <p class="section-copy">
+            If you are ready to learn and grow, this program is structured to help you start from where you are.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card reveal">
+            <h3>This program is ideal for:</h3>
+            <ul class="audience-list">
+              <li><span class="tick">✓</span><span>Beginners with no prior experience</span></li>
+              <li><span class="tick">✓</span><span>Students who want to earn online</span></li>
+              <li><span class="tick">✓</span><span>Workers seeking an additional income stream</span></li>
+              <li><span class="tick">✓</span><span>Business owners who want digital skills</span></li>
+              <li><span class="tick">✓</span><span>Freelancers who want to expand their services</span></li>
+              <li><span class="tick">✓</span><span>Anyone ready to learn and grow</span></li>
+            </ul>
+          </article>
+
+          <article class="audience-card reveal delay-1">
+            <h3>What you need to begin</h3>
+            <p>
+              If you have a smartphone or laptop with internet access, you can begin. The structure is simple enough to follow
+              and practical enough to turn into real skill.
+            </p>
+            <div class="device-note">
+              Start with what you have. Grow your skills. Build your future one step at a time.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <div class="container">
+        <div class="access-card reveal">
+          <div class="eyebrow">Get Access Today</div>
+          <h2 class="section-title">Take the next step toward building digital income.</h2>
+          <p>
+            Secure your access now and begin immediately after payment. Safe and secure payment via Paystack.
+          </p>
+
+          <div class="cta-actions">
+            <a href="https://www.novapixelstudio.site" target="_blank" rel="noreferrer" class="btn btn-primary">CLICK HERE TO GET ACCESS</a>
+            <a href="https://www.novapixelstudio.site" target="_blank" rel="noreferrer" class="btn btn-secondary">Do you have a question? Contact us</a>
+          </div>
+
+          <div class="payment-note">Safe and secure payment via Paystack.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div>NovaPixel Studio</div>
+      <div>&copy; 2026 All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((element) => {
+      revealObserver.observe(element);
+    });
+  </script>
+</body>
+</html>
